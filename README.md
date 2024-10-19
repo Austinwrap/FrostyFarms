@@ -59,9 +59,21 @@
         }
         .farmer-rank {
             font-weight: bold;
-            font-size: 1.5em;
+            font-size: 2em;
             color: #ff4500; /* Orange red to make it stand out */
-            text-shadow: 1px 1px 2px #000; /* Shadow for emphasis */
+            text-shadow: 2px 2px 4px #000; /* Shadow for emphasis */
+            letter-spacing: 1px;
+        }
+        .money-display {
+            font-size: 2em;
+            color: #ffd700; /* Gold color for importance */
+            font-weight: bold;
+            text-shadow: 1px 1px 3px #000;
+            padding: 10px;
+            background-color: #fff8dc;
+            border: 3px solid #228b22;
+            border-radius: 10px;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -78,7 +90,7 @@
         <p>Wool: <span id="wool">0</span></p>
         <p>Roosters: <span id="roosters">0</span></p>
         <p>Egg Production Boost: <span id="eggBoost">0%</span></p>
-        <p>Money: $<span id="money">0</span></p>
+        <p class="money-display">Money: $<span id="money">0</span></p>
         <p>Farmer Rank: <span id="farmerRank" class="farmer-rank">Backyard DIY Farmer</span></p>
     </div>
 
@@ -96,26 +108,26 @@
     <select id="upgrade-options" onchange="buyUpgrade()">
         <option value="">-- Buy Upgrade --</option>
         <option value="chicken">🐔 Buy a Chicken ($20)</option>
-        <option value="autoCollector">🤖 Automatic Egg Collector ($100)</option>
-        <option value="biggerCoop">🏠 Upgrade Coop to Hold More Chickens ($200)</option>
-        <option value="fertilizedFeed">🌾 Fertilized Feed for Faster Egg Production ($400)</option>
-        <option value="buyCow">🐄 Buy a Cow ($800)</option>
-        <option value="autoMilker">🍼 Automatic Milking Machine ($1200)</option>
-        <option value="buyGoat">🐐 Buy a Goat ($1000)</option>
-        <option value="autoGoatMilker">🐐🍼 Automatic Goat Milker ($1500)</option>
-        <option value="buyField">🌱 Buy a Crop Field ($1500)</option>
-        <option value="buyTractor">🚜 Buy a Tractor for Automated Farming ($2500)</option>
-        <option value="buyWindmill">🌬️ Buy a Windmill to Increase Crop Efficiency ($3000)</option>
-        <option value="buildProcessingPlant">🏭 Build a Processing Plant ($5000)</option>
-        <option value="buySolarPanels">🔆 Buy Solar Panels for Passive Income ($6000)</option>
-        <option value="buyBarn">🏚️ Build a Barn for More Livestock ($8000)</option>
-        <option value="buySheep">🐑 Buy a Sheep ($2000)</option>
-        <option value="autoShearer">✂️ Automatic Sheep Shearer ($3000)</option>
-        <option value="buyGreenhouse">🏡 Buy a Greenhouse to Grow Exotic Crops ($10000)</option>
-        <option value="buyApiary">🐝 Buy an Apiary for Honey Production ($15000)</option>
-        <option value="buyCombineHarvester">🚜 Buy a Combine Harvester for Crop Efficiency ($20000)</option>
-        <option value="buildCreamery">🧀 Build a Creamery for Cheese Production ($25000)</option>
-        <option value="buyRooster">🐓 Buy a Rooster to Boost Egg Production ($5000)</option>
+        <option value="autoCollector">🤖 Automatic Egg Collector ($150)</option>
+        <option value="biggerCoop">🏠 Upgrade Coop to Hold More Chickens ($500)</option>
+        <option value="fertilizedFeed">🌾 Fertilized Feed for Faster Egg Production ($800)</option>
+        <option value="buyCow">🐄 Buy a Cow ($1000)</option>
+        <option value="autoMilker">🍼 Automatic Milking Machine ($2000)</option>
+        <option value="buyGoat">🐐 Buy a Goat ($1500)</option>
+        <option value="autoGoatMilker">🐐🍼 Automatic Goat Milker ($2500)</option>
+        <option value="buyField">🌱 Buy a Crop Field ($2000)</option>
+        <option value="buyTractor">🚜 Buy a Tractor for Automated Farming ($3000)</option>
+        <option value="buyWindmill">🌬️ Buy a Windmill to Increase Crop Efficiency ($5000)</option>
+        <option value="buildProcessingPlant">🏭 Build a Processing Plant ($8000)</option>
+        <option value="buySolarPanels">🔆 Buy Solar Panels for Passive Income ($10000)</option>
+        <option value="buyBarn">🏚️ Build a Barn for More Livestock ($12000)</option>
+        <option value="buySheep">🐑 Buy a Sheep ($3000)</option>
+        <option value="autoShearer">✂️ Automatic Sheep Shearer ($5000)</option>
+        <option value="buyGreenhouse">🏡 Buy a Greenhouse to Grow Exotic Crops ($15000)</option>
+        <option value="buyApiary">🐝 Buy an Apiary for Honey Production ($20000)</option>
+        <option value="buyCombineHarvester">🚜 Buy a Combine Harvester for Crop Efficiency ($30000)</option>
+        <option value="buildCreamery">🧀 Build a Creamery for Cheese Production ($35000)</option>
+        <option value="buyRooster">🐓 Buy a Rooster to Boost Egg Production ($7000)</option>
     </select>
 
     <div class="rules">
@@ -179,7 +191,7 @@
 
         function sellEggs() {
             if (eggs > 0) {
-                money += eggs * 2; // Eggs sell for $2 each
+                money += eggs * 0.3; // Eggs sell for $0.3 each
                 eggs = 0;
                 updateFarmStatus();
             } else {
@@ -194,7 +206,7 @@
 
         function sellMilk() {
             if (milk > 0) {
-                money += milk * 5; // Milk sells for $5 each
+                money += milk * 2; // Milk sells for $2 each
                 milk = 0;
                 updateFarmStatus();
             } else {
@@ -209,7 +221,7 @@
 
         function sellGoatMilk() {
             if (goatMilk > 0) {
-                money += goatMilk * 8; // Goat milk sells for $8 each
+                money += goatMilk * 3; // Goat milk sells for $3 each
                 goatMilk = 0;
                 updateFarmStatus();
             } else {
@@ -224,7 +236,7 @@
 
         function sellWool() {
             if (wool > 0) {
-                money += wool * 10; // Wool sells for $10 each
+                money += wool * 4; // Wool sells for $4 each
                 wool = 0;
                 updateFarmStatus();
             } else {
@@ -237,73 +249,73 @@
             if (upgrade === "chicken" && money >= 20) {
                 chickens++;
                 money -= 20;
-            } else if (upgrade === "autoCollector" && money >= 100) {
+            } else if (upgrade === "autoCollector" && money >= 150) {
                 autoCollector = true;
-                money -= 100;
+                money -= 150;
                 startAutoCollector();
-            } else if (upgrade === "biggerCoop" && money >= 200) {
-                chickens += 5;
-                money -= 200;
-            } else if (upgrade === "fertilizedFeed" && money >= 400) {
-                chickens *= 2;
-                money -= 400;
-            } else if (upgrade === "buyCow" && money >= 800) {
-                cows++;
+            } else if (upgrade === "biggerCoop" && money >= 500) {
+                chickens += 2;
+                money -= 500;
+            } else if (upgrade === "fertilizedFeed" && money >= 800) {
+                chickens += Math.floor(chickens / 3);
                 money -= 800;
-            } else if (upgrade === "autoMilker" && money >= 1200) {
-                autoMilker = true;
-                money -= 1200;
-                startAutoMilker();
-            } else if (upgrade === "buyGoat" && money >= 1000) {
-                goats++;
+            } else if (upgrade === "buyCow" && money >= 1000) {
+                cows++;
                 money -= 1000;
-            } else if (upgrade === "autoGoatMilker" && money >= 1500) {
-                autoGoatMilker = true;
-                money -= 1500;
-                startAutoGoatMilker();
-            } else if (upgrade === "buyField" && money >= 1500) {
-                cropFields++;
-                money -= 1500;
-            } else if (upgrade === "buyTractor" && money >= 2500) {
-                money -= 2500;
-                startAutoFarming();
-            } else if (upgrade === "buyWindmill" && money >= 3000) {
-                money -= 3000;
-                startWindmillBoost();
-            } else if (upgrade === "buildProcessingPlant" && money >= 5000) {
-                processingPlant = true;
-                money -= 5000;
-            } else if (upgrade === "buySolarPanels" && money >= 6000) {
-                solarPanels++;
-                money -= 6000;
-                startSolarPanelIncome();
-            } else if (upgrade === "buyBarn" && money >= 8000) {
-                money -= 8000;
-                startBarnExpansion();
-            } else if (upgrade === "buySheep" && money >= 2000) {
-                sheep++;
+            } else if (upgrade === "autoMilker" && money >= 2000) {
+                autoMilker = true;
                 money -= 2000;
-            } else if (upgrade === "autoShearer" && money >= 3000) {
-                autoShearer = true;
+                startAutoMilker();
+            } else if (upgrade === "buyGoat" && money >= 1500) {
+                goats++;
+                money -= 1500;
+            } else if (upgrade === "autoGoatMilker" && money >= 2500) {
+                autoGoatMilker = true;
+                money -= 2500;
+                startAutoGoatMilker();
+            } else if (upgrade === "buyField" && money >= 2000) {
+                cropFields++;
+                money -= 2000;
+            } else if (upgrade === "buyTractor" && money >= 3000) {
                 money -= 3000;
-                startAutoShearing();
-            } else if (upgrade === "buyGreenhouse" && money >= 10000) {
-                money -= 10000;
-                startGreenhouse();
-            } else if (upgrade === "buyApiary" && money >= 15000) {
-                money -= 15000;
-                startApiary();
-            } else if (upgrade === "buyCombineHarvester" && money >= 20000) {
-                money -= 20000;
-                startCombineHarvesting();
-            } else if (upgrade === "buildCreamery" && money >= 25000) {
-                processingPlant = true;
-                money -= 25000;
-                startCreamery();
-            } else if (upgrade === "buyRooster" && money >= 5000) {
-                roosters++;
-                eggProductionBoost += 10; // Each rooster boosts egg production by 10%
+                startAutoFarming();
+            } else if (upgrade === "buyWindmill" && money >= 5000) {
                 money -= 5000;
+                startWindmillBoost();
+            } else if (upgrade === "buildProcessingPlant" && money >= 8000) {
+                processingPlant = true;
+                money -= 8000;
+            } else if (upgrade === "buySolarPanels" && money >= 10000) {
+                solarPanels++;
+                money -= 10000;
+                startSolarPanelIncome();
+            } else if (upgrade === "buyBarn" && money >= 12000) {
+                money -= 12000;
+                startBarnExpansion();
+            } else if (upgrade === "buySheep" && money >= 3000) {
+                sheep++;
+                money -= 3000;
+            } else if (upgrade === "autoShearer" && money >= 5000) {
+                autoShearer = true;
+                money -= 5000;
+                startAutoShearing();
+            } else if (upgrade === "buyGreenhouse" && money >= 15000) {
+                money -= 15000;
+                startGreenhouse();
+            } else if (upgrade === "buyApiary" && money >= 20000) {
+                money -= 20000;
+                startApiary();
+            } else if (upgrade === "buyCombineHarvester" && money >= 30000) {
+                money -= 30000;
+                startCombineHarvesting();
+            } else if (upgrade === "buildCreamery" && money >= 35000) {
+                processingPlant = true;
+                money -= 35000;
+                startCreamery();
+            } else if (upgrade === "buyRooster" && money >= 7000) {
+                roosters++;
+                eggProductionBoost += 5; // Each rooster boosts egg production by 5%
+                money -= 7000;
             } else {
                 alert("Not enough money for this upgrade or invalid option!");
             }
@@ -342,7 +354,7 @@
         function startSolarPanelIncome() {
             if (!passiveIncomeInterval) {
                 passiveIncomeInterval = setInterval(() => {
-                    money += solarPanels * 50; // Solar panels generate passive income
+                    money += solarPanels * 20; // Solar panels generate passive income
                     updateFarmStatus();
                 }, 5000); // Every 5 seconds
             }
