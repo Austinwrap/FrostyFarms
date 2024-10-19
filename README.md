@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Frosty Farms</title>
     <style>
         body {
@@ -57,6 +57,12 @@
             background-color: #f0e68c; /* Khaki background for rule book */
             border-radius: 10px;
         }
+        .farmer-rank {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #ff4500; /* Orange red to make it stand out */
+            text-shadow: 1px 1px 2px #000; /* Shadow for emphasis */
+        }
     </style>
 </head>
 <body>
@@ -73,7 +79,7 @@
         <p>Roosters: <span id="roosters">0</span></p>
         <p>Egg Production Boost: <span id="eggBoost">0%</span></p>
         <p>Money: $<span id="money">0</span></p>
-        <p>Farmer Rank: <span id="farmerRank">Backyard DIY Farmer</span></p>
+        <p>Farmer Rank: <span id="farmerRank" class="farmer-rank">Backyard DIY Farmer</span></p>
     </div>
 
     <div class="buttons-container">
